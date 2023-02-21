@@ -7,6 +7,8 @@ it uses Vue + Typescript, Pinia as state management, SASS and PUG for templating
 The intended use of this tool is creating nice-looking PDFs using browser print tools. 
 It's also handy for actual printing using Contrast theme.
 
+Try it out at [Github Pages](https://d-klimenko.github.io/blocky-cv/).
+
 ## Features
 * Add, modify or delete blocks related to your work experience, education, skills, contacts, etc.;
 * Drag-and-drop support on any list element;
