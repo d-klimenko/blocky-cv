@@ -1,0 +1,168 @@
+@use "sass:list"
+@use "sass:color"
+
+$bluemoon-theme: [#4b4fcc, #505dea, #fafafa, #e8e8e8, #8c8c8c, #8c8c8c, #333333, #fafafa]
+$daybreak-theme: [#ff8c64, #ff9b00, #fafafa, #e8e8e8, #8c8c8c, #8c8c8c, #333333, #fafafa]
+$bubblegum-theme: [#D59AB4, #DCB6D5, #fafafa, #e8e8e8, #8c8c8c, #8c8c8c, #333333, #fafafa]
+$fuchsia-theme: [#6F3781, #7D5BA6, #fafafa, #e8e8e8, #8c8c8c, #8c8c8c, #333333, #fafafa]
+$greentea-theme: [#CAE2BC, #BBDAA9, #fafafa, #F6F6F3, #8c8c8c, #B9B9A2, #384B30, #71955F]
+$solarized-theme: [#93a1a1, #839496, #eee8d5, #fdf6e3, #e8e8e8, #8c8c8c, #586e75, #fdf6e3]
+$contrast-theme: [#fff, #fff, #fff, #fff, #fff, #000, #000, #000]
+
+body
+  background-color: #e8e8e8
+  color: #333333
+
+@mixin theme($name, $list, $icons-dark: false)
+  .#{$name}
+    $main-color: list.nth($list, 1)
+    $accent-color: list.nth($list, 2)
+    $contrast-color: list.nth($list, 3)
+    $background-color: list.nth($list, 4)
+    $shadow-color: list.nth($list, 5)
+    $text-summary-color: list.nth($list, 6)
+    $text-main-color: list.nth($list, 7)
+    $text-sidebar-color: list.nth($list, 8)
+
+    .b-container
+      box-shadow: 0 0 0.3rem 0.3rem $shadow-color
+
+    .b-summary
+      color: $text-summary-color
+
+    .b-contact
+      &__text
+        color: $text-sidebar-color
+
+    .b-section
+      &--main
+        background-color: $contrast-color
+      &__header
+        &--sidebar
+          color: $text-sidebar-color
+          background-color: $accent-color
+        &--main
+          color: $main-color
+          border-top: .1rem dotted $accent-color
+          border-bottom: .1rem dotted $accent-color
+
+    .b-sidebar
+      background-color: $main-color
+      color: $text-sidebar-color
+
+    .b-main
+      background-color: $contrast-color
+      color: $text-main-color
+
+    .b-form
+      background: $accent-color
+
+      &__select
+        background: transparent
+        color: $text-sidebar-color
+
+      &__button
+        &--primary
+          background-color: $contrast-color
+          color: $main-color
+          &:hover
+            background-color: color.scale($contrast-color, $lightness: -10%)
+
+        &--secondary
+          background-color: $accent-color
+          color: $text-sidebar-color
+          &:hover
+            background-color: color.scale($accent-color, $lightness: 10%)
+
+      &__radio
+        & + label
+          background-color: $main-color
+          transition: background-color .5s ease-out
+          &:hover
+            cursor: pointer
+        &:checked + label
+          background-color: $text-sidebar-color
+          border-color: $main-color
+          color: $main-color
+
+
+    .b-sidebar-menu
+      background-color: $main-color
+      color: $text-sidebar-color
+      &--open
+        box-shadow: 0 0 1rem .1rem black
+        border-right: 1px solid $accent-color
+
+    .b-experience
+      &__header:hover
+        background-color: color.scale($background-color, $lightness: -10%)
+        cursor: pointer
+      &__period-text
+        border-left: 2px solid $accent-color
+      &__list-item
+        &::marker
+          color: $main-color
+
+      &--over-bf::before,
+      &--over-af::after
+        background-color: color.scale($text-summary-color, $lightness: 50%)
+
+    .b-button
+      &--sidebar
+        color: $text-sidebar-color
+      &:hover
+        color: color.scale($accent-color, $lightness: -10%)
+        cursor: pointer
+
+    .b-side-buttons
+      &__button
+        background-color: $accent-color
+        color: $text-sidebar-color
+        border: transparent
+        border-radius: 50%
+        box-shadow: none
+
+        &:hover
+          background-color: color.scale($accent-color, $lightness: 10%)
+
+      &__tooltip
+        background-color: $text-summary-color
+        color: $contrast-color
+
+    @if($name == contrast-theme)
+      .b-section
+        &__header
+          border-top: 1px dotted $text-summary-color
+          border-bottom: 1px dotted $text-summary-color
+          &--sidebar
+            padding: 0.3rem 0
+            margin: 0.5rem 0
+          &--main
+            color: $text-main-color
+
+      .b-experience
+        &__list-item
+          &::marker
+            color: $text-main-color
+        &__period-text
+          border-left: 2px solid $text-main-color
+
+      .b-form__button--primary
+          background-color: $text-main-color
+          color: $contrast-color
+          &:hover
+            background-color: color.scale($text-main-color, $lightness: -10%)
+
+      .b-side-buttons__button
+          border: 2px solid $text-main-color
+          &:hover
+            background-color: color.scale($accent-color, $lightness: -10%)
+
+
+@include theme(bluemoon-theme, $bluemoon-theme, false)
+@include theme(daybreak-theme, $daybreak-theme, false)
+@include theme(bubblegum-theme, $bubblegum-theme, false)
+@include theme(fuchsia-theme, $fuchsia-theme, false)
+@include theme(greentea-theme, $greentea-theme, false)
+@include theme(solarized-theme, $solarized-theme, false)
+@include theme(contrast-theme, $contrast-theme, true)
