@@ -2,7 +2,7 @@
 
 ## About
 Fillable Resumé with block layout, inspired by [Zety](https://zety.com/). Configurable and extendable,
-it uses Vue + Typescript, Pinia as state management, SASS and PUG for templating.
+it uses Vue + Typescript, Pinia as state management, SASS and Pug for templating.
 
 The intended use of this tool is creating nice-looking PDFs using browser print tools. 
 It's also handy for actual printing using Contrast theme.
