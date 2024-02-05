@@ -64,21 +64,23 @@ export const defaultPage = {
     new Contact(contactDefinitions[ContactType.GitHub], 'john-doe'),
   ],
   repeatables: [
-    {title: 'Skills', items: [
+    {
+      title: 'Skills', items: [
         ['Frontend', 'JavaScript, React, Redux, TypeScript, CSS'],
         ['Backend', 'Node, Express, MongoDB, MySQL'],
         ['DevOps', 'Docker, Kubernetes, AWS, GCP'],
         ['Tools', 'Git, Jira, Confluence, Trello']
-    ]},
-    {title: 'Languages', items: ['English', 'Spanish', 'French']},
-    {title: 'Hobbies', items: ['Gaming', 'Reading', 'Traveling']},
-    {title: 'Interests', items: ['Technology', 'Music', 'Sports']}
+      ]
+    },
+    { title: 'Languages', items: ['English', 'Spanish', 'French'] },
+    { title: 'Hobbies', items: ['Gaming', 'Reading', 'Traveling'] },
+    { title: 'Interests', items: ['Technology', 'Music', 'Sports'] }
   ],
   experience: [
-    defaultExperience,
-    defaultExperience
+    { ...defaultExperience },
+    { ...defaultExperience }
   ],
   education: [
-    defaultEducation
+    { ...defaultEducation }
   ]
 }
